@@ -1,0 +1,235 @@
+/* ==========================================================================
+   Project base stylesheet (cleaned & organized)
+   - Purpose: readable, maintainable subset of your Tailwind-generated CSS
+   - Keep the full Tailwind build for complete utility coverage if needed
+   ========================================================================== */
+
+/* -------------------------
+   1. Reset / sensible defaults
+   ------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgba(59, 130, 246, 0.5);
+  --tw-ring-offset-shadow: 0 0 transparent;
+  --tw-ring-shadow: 0 0 transparent;
+  --tw-shadow: 0 0 transparent;
+  --tw-shadow-colored: 0 0 transparent;
+}
+
+:root {
+  /* Color system (HSL tokens used by Tailwind theme) */
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --radius: 0.5rem;
+
+  /* semantic colors */
+  --primary: 222.2 47.4% 11.2%;
+  --primary-foreground: 210 40% 98%;
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 210 40% 96.1%;
+  --destructive: 0 84.2% 60.2%;
+  --ring: 222.2 84% 4.9%;
+}
+
+/* Dark theme overrides */
+.dark {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --card: 222.2 84% 4.9%;
+  --card-foreground: 210 40% 98%;
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+  --primary: 210 40% 98%;
+  --primary-foreground: 222.2 47.4% 11.2%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+}
+
+/* Base typography and body */
+html, :host {
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  -moz-tab-size: 4;
+  tab-size: 4;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  line-height: inherit;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Accessibility helpers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* -------------------------
+   2. Layout helpers
+   ------------------------- */
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  max-width: 1400px;
+}
+
+/* Flex / grid helpers (commonly used) */
+.flex { display: flex; }
+.inline-flex { display: inline-flex; }
+.grid { display: grid; }
+.block { display: block; }
+.hidden { display: none; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.flex-col { flex-direction: column; }
+.flex-row { flex-direction: row; }
+
+/* Spacing utilities (representative subset) */
+.m-0 { margin: 0; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.mt-4 { margin-top: 1rem; }
+.mb-4 { margin-bottom: 1rem; }
+.p-2 { padding: 0.5rem; }
+.p-4 { padding: 1rem; }
+.p-6 { padding: 1.5rem; }
+.gap-4 { gap: 1rem; }
+.gap-6 { gap: 1.5rem; }
+
+/* Sizing */
+.w-full { width: 100%; }
+.h-full { height: 100%; }
+.h-40 { height: 10rem; }
+.h-48 { height: 12rem; }
+.max-w-6xl { max-width: 72rem; }
+
+/* Border & radius */
+.rounded { border-radius: 0.25rem; }
+.rounded-lg { border-radius: var(--radius); }
+.rounded-full { border-radius: 9999px; }
+.border { border-width: 1px; border-style: solid; border-color: hsl(var(--border)); }
+.border-0 { border-width: 0; }
+
+/* Background & text */
+.bg-card { background-color: hsl(var(--card)); }
+.text-muted { color: hsl(var(--muted-foreground)); }
+.text-center { text-align: center; }
+
+/* Utility for subtle card shadow */
+.shadow-sm { box-shadow: 0 1px 2px rgba(0,0,0,0.04); }
+.shadow-lg { box-shadow: 0 10px 15px rgba(0,0,0,0.08); }
+
+/* -------------------------
+   3. Animations & interactions
+   ------------------------- */
+@keyframes bounce {
+  0%, 100% { transform: translateY(-25%); animation-timing-function: cubic-bezier(.8,0,1,1); }
+  50% { transform: none; animation-timing-function: cubic-bezier(0,0,.2,1); }
+}
+.animate-bounce { animation: bounce 1s infinite; }
+
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
+.animate-pulse { animation: pulse 2s cubic-bezier(.4,0,.6,1) infinite; }
+
+/* Reveal on scroll (used in many sections) */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .5s ease, transform .5s ease;
+}
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* -------------------------
+   4. Common components (cards, badges, buttons)
+   ------------------------- */
+.card {
+  background: hsl(var(--card));
+  color: hsl(var(--card-foreground));
+  border-radius: var(--radius);
+  border: 1px solid hsl(var(--border));
+  overflow: hidden;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: .25rem .5rem;
+  border-radius: 9999px;
+  font-size: .75rem;
+  font-weight: 600;
+}
+
+/* Primary button (simple) */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .6rem 1rem;
+  border-radius: .5rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+}
+.btn-outline {
+  background: transparent;
+  border: 1px solid hsl(var(--border));
+  color: hsl(var(--foreground));
+}
+
+/* -------------------------
+   5. Accessibility & small helpers
+   ------------------------- */
+[role="button"], button { cursor: pointer; }
+:disabled { cursor: default; opacity: .6; pointer-events: none; }
+
+/* -------------------------
+   6. Notes and integration tips
+   ------------------------- */
+/*
+  - This file is a readable subset of the full Tailwind output.
+  - If you rely on many Tailwind utilities, keep the compiled CSS produced by Tailwind
+    and import it instead of this summary.
+  - To re-enable the full utility set, include your generated CSS:
+      <link rel="stylesheet" href="/qf/_next/static/css/6eccd3e40eaa6aa7.css">
+  - Use the `.reveal` class with the IntersectionObserver script you already have to animate elements on scroll.
+  - Keep color tokens in :root so you can theme easily (switch `.dark` class on <html> or <body>).
+*/
